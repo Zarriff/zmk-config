@@ -12,6 +12,25 @@
 };
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        escape {
+            bindings = <&kp ESCAPE>;
+            key-positions = <3 2>;
+        };
+
+        tab {
+            bindings = <&kp TAB>;
+            key-positions = <26 27>;
+        };
+
+        enter {
+            bindings = <&kp ENTER>;
+            key-positions = <32 33>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
