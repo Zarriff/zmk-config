@@ -15,30 +15,45 @@
 #define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                                  // Thumb keys.
 
 /* Left-hand HRMs. */
-ZMK_HOLD_TAP(hml,
+// ZMK_HOLD_TAP(hml,
+//     flavor = "balanced";
+//     tapping-term-ms = <2500>;
+//     quick-tap-ms = <175>;
+//     require-prior-idle-ms = <150>;
+//     bindings = <&kp>, <&kp>;
+//     hold-trigger-key-positions = <KEYS_R THUMBS>;
+//     hold-trigger-on-release;
+// )
+
+/* Right-hand HRMs. */
+// ZMK_HOLD_TAP(hmr,
+//     flavor = "balanced";
+//     tapping-term-ms = <2500>;
+//     quick-tap-ms = <175>;
+//     require-prior-idle-ms = <150>;
+//     bindings = <&kp>, <&kp>;
+//     hold-trigger-key-positions = <KEYS_L THUMBS>;
+//     hold-trigger-on-release;
+// )
+
+&mt {
     flavor = "balanced";
-    tapping-term-ms = <2500>;
+    tapping-term-ms = <280>;
     quick-tap-ms = <175>;
     require-prior-idle-ms = <150>;
     bindings = <&kp>, <&kp>;
     hold-trigger-key-positions = <KEYS_R THUMBS>;
     hold-trigger-on-release;
-)
+};
 
-/* Right-hand HRMs. */
-ZMK_HOLD_TAP(hmr,
+&mt {
     flavor = "balanced";
-    tapping-term-ms = <2500>;
+    tapping-term-ms = <280>;
     quick-tap-ms = <175>;
     require-prior-idle-ms = <150>;
     bindings = <&kp>, <&kp>;
     hold-trigger-key-positions = <KEYS_L THUMBS>;
     hold-trigger-on-release;
-)
-
-&mt {
-    tapping-term-ms = <280>;
-    flavor = "balanced";
 };
 
 / {
