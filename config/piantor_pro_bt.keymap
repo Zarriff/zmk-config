@@ -37,7 +37,8 @@ ZMK_HOLD_TAP(hmr,
 )
 
 &mt {
-    tapping-term-ms = <5000>;
+    tapping-term-ms = <280>;
+    flavor = "balanced";
 };
 
 / {
