@@ -73,7 +73,7 @@ ZMK_HOLD_TAP(hmr,
             //                    | GUI | LWR | SPC | ENT | RSE  | ALT |
 
             bindings = <
-&kp LG(SPACE)  &kp Q  &kp W  &kp F  &kp P  &kp B  &kp J  &kp L  &kp U  &kp Y  &kp SINGLE_QUOTE  &caps_word  &kp MINUS  &mt LEFT_CONTROL A  &mt LEFT_ALT R  &mt LEFT_SHIFT S  &mt LEFT_GUI T  &kp G  &kp K  &mt LEFT_GUI N  &mt LEFT_SHIFT E  &mt LEFT_ALT I  &mt LEFT_CONTROL O  &kp SEMICOLON  &kp BACKSPACE  &kp Z  &kp X  &kp C  &kp D  &kp V  &kp N  &kp H  &kp COMMA  &kp DOT  &kp FSLH  &tog 4  &kp LA(SPACE)  &lt 1 SPACE  &mo 1  &mo 2  &sk LEFT_SHIFT  &kp LS(LA(LG(LC(SPACE))))
+&kp LG(SPACE)  &kp Q  &kp W  &kp F  &kp P  &kp B  &kp J  &kp L  &kp U  &kp Y  &kp SINGLE_QUOTE  &caps_word  &kp MINUS  &mt LEFT_CONTROL A  &mt LEFT_ALT R  &mt LEFT_SHIFT S  &mt LEFT_GUI T  &kp G  &kp K  &mt LEFT_GUI N  &mt LEFT_SHIFT E  &mt LEFT_ALT I  &mt LEFT_CONTROL O  &kp SEMICOLON  &kp BACKSPACE  &kp Z  &kp X  &kp C  &kp D  &kp V  &kp N  &kp H  &kp COMMA  &kp DOT  &kp FSLH  &mo 4  &kp LA(SPACE)  &lt 1 SPACE  &mo 1  &mo 2  &sk LEFT_SHIFT  &kp LS(LA(LG(LC(SPACE))))
             >;
         };
 
