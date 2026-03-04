@@ -77,7 +77,7 @@
             #binding-cells = <1>;
             display-name = "Toggle Layer On";
             toggle-mode = "on";
-            locking;
+            // locking;
         };
     };
 
