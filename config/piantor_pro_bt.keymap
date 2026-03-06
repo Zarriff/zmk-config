@@ -15,7 +15,7 @@
 #define THUMBS LH2 LH1 LH0 RH0 RH1 RH2                                                  // Thumb keys.
 
 &mt {
-    flavor = "balanced";
+    flavor = "hold-preferred";
     tapping-term-ms = <280>;
     quick-tap-ms = <175>;
     require-prior-idle-ms = <125>;
@@ -26,7 +26,7 @@
 };
 
 &mt {
-    flavor = "balanced";
+    flavor = "hold-preferred";
     tapping-term-ms = <280>;
     quick-tap-ms = <175>;
     require-prior-idle-ms = <125>;
@@ -76,7 +76,6 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp EXCLAMATION>;
-
             mods = <MOD_LSFT>;
         };
 
@@ -84,7 +83,6 @@
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp AT_SIGN>;
-
             mods = <MOD_LSFT>;
         };
     };
@@ -149,7 +147,7 @@
             //                        |  |  |  ||  |  |  |
 
             bindings = <
-&trans  &kp F10  &kp F9  &kp F8  &kp F7  &none  &kp EQUAL  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &mt DOLLAR HASH  &kp TAB  &kp LG(W)  &mt LEFT_CONTROL F11  &mt LEFT_ALT F6  &mt LEFT_SHIFT F5  &mt LEFT_GUI F4  &none  &kp MINUS  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp NUMBER_0  &kp ENTER  &kp LG(Q)  &kp F12  &kp F3  &kp F2  &kp F1  &none  &kp PERCENT  &kp NUMBER_1  &mt COMMA NUMBER_2  &mt PERIOD NUMBER_3  &mt ASTERISK SLASH  &kp BACKSPACE  &trans  &trans  &trans  &trans  &kp SPACE  &trans
+&trans  &kp F10  &kp F9  &kp F8  &kp F7  &none  &kp EQUAL  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &mt DOLLAR HASH  &kp TAB  &kp LG(W)  &mt LEFT_CONTROL F11  &mt LEFT_ALT F6  &mt LEFT_SHIFT F5  &mt LEFT_GUI F4  &none  &kp MINUS  &kp NUMBER_4  &kp NUMBER_5  &kp NUMBER_6  &kp NUMBER_0  &kp ENTER  &kp LG(Q)  &kp F12  &kp F3  &kp F2  &kp F1  &none  &kp PERCENT  &kp NUMBER_1  &mt COMMA NUMBER_2  &mt PERIOD NUMBER_3  &mt ASTERISK SLASH  &kp BACKSPACE  &trans  &trans  &trans  &trans  &trans  &trans
             >;
         };
 
@@ -163,7 +161,7 @@
             //               |  |  |  ||  |  |
 
             bindings = <
-&none  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT  &kp CARET  &kp AMPERSAND  &kp ASTERISK  &kp QUESTION  &kp SQT  &none  &none  &mt LEFT_CONTROL PLUS  &mt LEFT_ALT EQUAL  &mt LEFT_SHIFT LEFT_PARENTHESIS  &mt LEFT_GUI RIGHT_PARENTHESIS  &kp DOUBLE_QUOTES  &kp COLON  &mt LEFT_GUI RIGHT_BRACKET  &mt LEFT_SHIFT LEFT_BRACKET  &mt LEFT_ALT RIGHT_BRACE  &mt LEFT_CONTROL LEFT_BRACE  &none  &trans  &kp PIPE  &kp LESS_THAN  &kp MINUS  &kp GREATER_THAN  &kp BACKSLASH  &kp GRAVE  &kp UNDERSCORE  &kp SLASH  &kp TILDE  &kp SEMICOLON  &none  &trans  &kp SPACE  &none  &none  &none  &trans
+&none  &kp EXCLAMATION  &kp AT_SIGN  &kp HASH  &kp DOLLAR  &kp PERCENT  &kp CARET  &kp AMPERSAND  &kp ASTERISK  &kp QUESTION  &kp SQT  &none  &none  &mt LEFT_CONTROL PLUS  &mt LEFT_ALT EQUAL  &mt LEFT_SHIFT LEFT_PARENTHESIS  &mt LEFT_GUI RIGHT_PARENTHESIS  &kp DOUBLE_QUOTES  &kp COLON  &mt LEFT_GUI RIGHT_BRACKET  &mt LEFT_SHIFT LEFT_BRACKET  &mt LEFT_ALT RIGHT_BRACE  &mt LEFT_CONTROL LEFT_BRACE  &none  &trans  &kp PIPE  &kp LESS_THAN  &kp MINUS  &kp GREATER_THAN  &kp BACKSLASH  &kp GRAVE  &kp UNDERSCORE  &kp SLASH  &kp TILDE  &kp SEMICOLON  &none  &trans  &none  &none  &none  &none  &trans
             >;
         };
 
