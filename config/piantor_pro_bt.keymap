@@ -55,7 +55,7 @@
             hold-trigger-on-release;
         };
 
-        hml: homerow_mods_right { \
+        hmr: homerow_mods_right { \
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
