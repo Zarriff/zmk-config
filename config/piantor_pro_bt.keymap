@@ -95,16 +95,25 @@
         combo_escape {
             bindings = <&kp ESCAPE>;
             key-positions = <3 2>;
+            timeout-ms = <30>;
+            require-prior-idle-ms = <150>;
+            layers = <0>;
         };
 
         combo_tab {
             bindings = <&kp TAB>;
             key-positions = <26 27>;
+            timeout-ms = <30>;
+            require-prior-idle-ms = <150>;
+            layers = <0>;
         };
 
         combo_enter {
             bindings = <&kp ENTER>;
             key-positions = <32 33>;
+            timeout-ms = <30>;
+            require-prior-idle-ms = <150>;
+            layers = <0>;
         };
     };
 
