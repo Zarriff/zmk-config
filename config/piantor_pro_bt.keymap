@@ -92,17 +92,17 @@
     combos {
         compatible = "zmk,combos";
 
-        escape {
+        combo_escape {
             bindings = <&kp ESCAPE>;
             key-positions = <3 2>;
         };
 
-        tab {
+        combo_tab {
             bindings = <&kp TAB>;
             key-positions = <26 27>;
         };
 
-        enter {
+        combo_enter {
             bindings = <&kp ENTER>;
             key-positions = <32 33>;
         };
