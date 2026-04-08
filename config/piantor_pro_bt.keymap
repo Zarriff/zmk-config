@@ -158,7 +158,7 @@
             //                        |  |  |  ||  |  |  |
 
             bindings = <
-&trans  &kp F10  &kp F9  &kp F8  &kp F7  &none  &mt EQUAL COLON  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &mt DOLLAR HASH  &kp TAB  &kp LG(W)  &hml LEFT_CONTROL F11  &hml LEFT_ALT F6  &hml LEFT_SHIFT F5  &hml LEFT_GUI F4  &none  &kp MINUS  &hmr LEFT_GUI NUMBER_4  &hmr LEFT_SHIFT NUMBER_5  &hmr LEFT_ALT NUMBER_6  &hmr LEFT_CONTROL NUMBER_0  &kp ENTER  &kp LG(Q)  &kp F12  &kp F3  &kp F2  &kp F1  &none  &kp PERCENT  &kp NUMBER_1  &mt COMMA NUMBER_2  &mt PERIOD NUMBER_3  &mt ASTERISK SLASH  &kp BACKSPACE  &trans  &trans  &trans  &trans  &kp SPACE  &trans
+&trans  &kp F10  &kp F9  &kp F8  &kp F7  &none  &mt COLON EQUAL  &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9  &mt DOLLAR HASH  &kp TAB  &kp LG(W)  &hml LEFT_CONTROL F11  &hml LEFT_ALT F6  &hml LEFT_SHIFT F5  &hml LEFT_GUI F4  &none  &kp MINUS  &hmr LEFT_GUI NUMBER_4  &hmr LEFT_SHIFT NUMBER_5  &hmr LEFT_ALT NUMBER_6  &hmr LEFT_CONTROL NUMBER_0  &kp ENTER  &kp LG(Q)  &kp F12  &kp F3  &kp F2  &kp F1  &none  &kp PERCENT  &kp NUMBER_1  &mt COMMA NUMBER_2  &mt PERIOD NUMBER_3  &mt ASTERISK SLASH  &kp BACKSPACE  &trans  &trans  &trans  &trans  &kp SPACE  &trans
             >;
         };
 
