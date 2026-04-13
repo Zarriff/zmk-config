@@ -133,7 +133,7 @@
                 &kp LG(SPACE) &kp Q &kp W &kp F &kp P &kp B        &kp J &kp L &kp U    &kp Y    &kp SQT  &caps_word
                 &kp MINUS     &kp A &kp R &kp S &kp T &kp G        &kp K &kp N &kp E    &kp I    &kp O    &kp SEMI
                 &kp BSPC      &kp Z &kp X &kp C &kp D &kp V        &kp M &kp H &commaat &dotexcl &kp FSLH &mo 4
-                &mt 5 LA(SPACE) &lt_repeat 2 SPACE &mo 1             &sl_mo 3 3 &skq LSHIFT &mt 6 LS(LA(LG(LC(SPACE))))
+                &mt 5 LA(SPACE) &lt_repeat 2 SPACE &mo 1           &sl_mo 3 3 &skq LSHIFT &mt 6 LS(LA(LG(LC(SPACE))))
             >;
         };
 
