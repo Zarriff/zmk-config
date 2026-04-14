@@ -116,7 +116,7 @@
                 &kp LG(SPACE) &kp Q &kp W &kp F &kp P &kp B        &kp J &kp L &kp U    &kp Y    &kp SQT  &caps_word
                 &kp TAB       &kp A &kp R &kp S &kp T &kp G        &kp K &kp N &kp E    &kp I    &kp O    &kp ENTER
                 &kp BSPC      &kp Z &kp X &kp C &kp D &kp V        &kp M &kp H &commaat &dotexcl &kp FSLH &kp ESC
-                &mt 4 LA(SPACE) &lt_repeat 2 SPACE &mo 1           &sl_mo 3 3 &skq LSHIFT &mt 5 LS(LA(LG(LC(SPACE))))
+                &lt 4 LA(SPACE) &lt_repeat 2 SPACE &mo 1           &sl_mo 3 3 &skq LSHIFT &lt 5 LS(LA(LG(LC(SPACE))))
             >;
         };
 
