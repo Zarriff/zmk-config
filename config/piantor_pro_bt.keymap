@@ -100,35 +100,6 @@
         };
     };
 
-
-    combos {
-        compatible = "zmk,combos";
-
-        combo_escape {
-            bindings = <&kp ESC>;
-            key-positions = <27 28>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <150>;
-            layers = <0>;
-        };
-
-        combo_tab {
-            bindings = <&kp TAB>;
-            key-positions = <31 32>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <150>;
-            layers = <0>;
-        };
-
-        combo_enter {
-            bindings = <&kp ENTER>;
-            key-positions = <31 33>;
-            timeout-ms = <40>;
-            require-prior-idle-ms = <150>;
-            layers = <0>;
-        };
-    };
-
     keymap {
         compatible = "zmk,keymap";
 
