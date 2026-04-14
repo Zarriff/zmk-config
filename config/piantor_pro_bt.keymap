@@ -220,7 +220,7 @@
                 &trans &trans &trans &trans &trans &trans        &trans &kp HYPER &kp MEH   &trans   &trans    &trans
                 &trans &trans &trans &trans &trans &trans        &trans &kp LGUI  &kp LSHFT &kp LALT &kp LCTRL &trans
                 &trans &trans &trans &trans &trans &trans        &trans &trans    &trans    &trans   &trans    &trans
-                &trans &none &none                                &none &none &none
+                &trans &trans &none                                &none &none &none
             >;
         };
 
