@@ -140,9 +140,9 @@
             //                    | Ray | SPC/LYR2 | LYR1 || LYR3 | SHIFT  | Leader |
 
             bindings = <
-                &kp LG(SPACE) &kp Q        &kp W       &kp F         &kp P       &kp B        &kp J &kp L       &kp U        &kp Y        &kp SQT         &caps_word
-                &kp TAB       &hml LCTRL A &hml LALT R &hml LSHFT S  &hml LGUI T &kp G        &kp K &hmr LGUI N &hmr LSHFT E &hmr LALT I  &hmr LCTRL O    &kp ENTER
-                &kp BSPC      &kp Z        &kp X       &kp C         &kp D       &kp V        &kp M &kp H       &commaat     &dotexcl     &kp FSLH        &kp ESC
+                &kp LG(SPACE) &kp Q        &kp W       &hml MED F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MED U   &kp Y        &kp SQT         &caps_word
+                &kp TAB       &hml LCTRL A &hml LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr LALT I  &hmr LCTRL O    &kp ENTER
+                &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp FSLH        &kp ESC
                 &kp LA(SPACE) &lt_repeat 2 SPACE &mo 1                                        &sl_mo 3 3 &skq LSHIFT &kp LS(LA(LG(LC(SPACE))))
             >;
         };
@@ -174,9 +174,9 @@
             //                        |  |  |  ||  |  |  |
 
             bindings = <
-                &kp LG(R) &kp F10        &kp F9       &kp F8         &kp F7       &none        &mt COLON EQUAL &kp N7       &kp N8         &kp N9       &mt DOLLAR HASH &trans
-                &kp LG(W) &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4 &none        &kp MINUS       &hmr LGUI N4 &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0   &trans
-                &kp LG(Q) &kp F12        &kp F3       &kp F2         &kp F1       &none        &kp PRCNT       &kp N1       &mt COMMA N2   &mt DOT N3   &mt ASTRK SLASH &trans
+                &kp LG(R) &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &none        &mt COLON EQUAL &hmr HYPER N7 &hmr MED N8    &kp N9       &mt DOLLAR HASH &trans
+                &kp LG(W) &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &none        &kp MINUS       &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0   &trans
+                &kp LG(Q) &kp F12        &kp F3       &kp F2         &kp F1        &none        &kp PRCNT       &kp N1        &mt COMMA N2   &mt DOT N3   &mt ASTRK SLASH &trans
                 &none &none &none                                                              &none &kp SPACE &none
             >;
         };
@@ -191,9 +191,9 @@
             //               |  |  |  ||  |  |
 
             bindings = <
-                &trans    &kp EXCL        &kp AT_SIGN     &kp HASH         &kp DOLLAR       &kp PRCNT        &kp CARET &kp AMPS       &kp ASTRK        &kp QMARK        &kp SQT         &trans
-                &trans    &hml LCTRL PLUS &hml LALT EQUAL &hml LSHIFT LPAR &hml LGUI RPAR   &kp DQT          &kp COLON &hmr LGUI RBKT &hmr LSHIFT LBKT &hmr LALT RBRC   &hmr LCTRL LBRC &trans
-                &trans    &kp PIPE        &kp LT          &kp MINUS        &kp GT           &kp BSLH         &kp GRAVE &kp UNDER      &kp SLASH        &kp TILDE        &kp SEMI        &trans
+                &trans    &kp EXCL        &kp AT_SIGN     &hml MEH HASH    &hml HYPER DOLLAR &kp PRCNT        &kp CARET &hmr HYPER AMPS &hmr MEH ASTRK   &kp QMARK        &kp SQT         &trans
+                &trans    &hml LCTRL PLUS &hml LALT EQUAL &hml LSHIFT LPAR &hml LGUI RPAR    &kp DQT          &kp COLON &hmr LGUI RBKT  &hmr LSHIFT LBKT &hmr LALT RBRC   &hmr LCTRL LBRC &trans
+                &trans    &kp PIPE        &kp LT          &kp MINUS        &kp GT            &kp BSLH         &kp GRAVE &kp UNDER       &kp SLASH        &kp TILDE        &kp SEMI        &trans
                 &none &kp SPACE &trans                                                                        &none &none &none
             >;
         };
