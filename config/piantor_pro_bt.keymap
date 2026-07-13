@@ -58,6 +58,16 @@
             bindings = <&mo>, <&kp>;
         };
 
+        mtt: mod_tap_tap_preferred {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <230>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <130>;
+            bindings = <&kp>, <&kp>;
+        };
+
         skq: sticky_key_quick_release {
             compatible = "zmk,behavior-sticky-key";
             #binding-cells = <1>;
@@ -174,9 +184,9 @@
             //                        |  |  |  ||  |  |  |
 
             bindings = <
-                &kp LG(R) &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &none        &mt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mt DOLLAR HASH &trans
-                &kp LG(W) &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &none        &kp MINUS       &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0   &trans
-                &kp LG(Q) &kp F12        &kp F3       &kp F2         &kp F1        &none        &kp PRCNT       &kp N1        &mt COMMA N2   &mt DOT N3   &mt ASTRK SLASH &trans
+                &kp LG(R) &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &none        &mtt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mtt DOLLAR HASH &trans
+                &kp LG(W) &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &none        &kp MINUS        &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0    &trans
+                &kp LG(Q) &kp F12        &kp F3       &kp F2         &kp F1        &none        &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
                 &none &none &none                                                              &none &kp SPACE &none
             >;
         };
