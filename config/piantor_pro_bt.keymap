@@ -124,6 +124,13 @@
             bindings = <&mo>, <&kp>;
         };
 
+        nav_word: nav_word {
+            compatible = "zmk,behavior-auto-layer";
+            #binding-cells = <1>;
+            continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN BSPC DEL LG(X) LG(C) LG(V) LG(LS(V)) LG(LS(K)) LG(SLASH)>;
+            ignore-modifiers;
+        };
+
         dotexcl: dot_shifted_exclamation {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -160,12 +167,12 @@
     combos {
         compatible = "zmk,combos";
 
-        combo_escape {
-            bindings = <&kp ESCAPE>;
+        combo_nav_word {
+            bindings = <&nav_word 1>;
             key-positions = <LB2 LB1>;
             timeout-ms = <50>;
             require-prior-idle-ms = <150>;
-            layers = <0>;
+            layers = <0 1>;
         };
 
         combo_terminal {
