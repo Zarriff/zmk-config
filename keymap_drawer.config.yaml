@@ -1,9 +1,9 @@
 # Configuration for keymap-drawer (https://github.com/caksoylar/keymap-drawer)
-# Used by .github/workflows/draw.yml to render SVGs into keymap-drawer/
+# Used by scripts/draw-keymap.sh to render SVG/PDF into keymap-drawer/
 parse_config:
-  # zmk-helpers is fetched by `west update` in CI; provides key-labels/42.h
+  # key-labels header cached by the script; provides LB2-style positions
   zmk_additional_includes:
-    - "zmk-helpers/include"
+    - ".zmk/keymap-drawer/include"
   raw_binding_map:
     "&caps_word": CAPS
     "&sys_reset": RESET

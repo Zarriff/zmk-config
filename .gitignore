@@ -2,5 +2,5 @@
 
 .zmk/
 
-# Locally generated from the CI-committed SVGs via scripts/keymap-pdf.sh
-keymap-drawer/*.pdf
+# Generated locally by scripts/draw-keymap.sh
+keymap-drawer/
