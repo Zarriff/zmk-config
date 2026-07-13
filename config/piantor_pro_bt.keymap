@@ -218,13 +218,13 @@
             // ----------------------------------------------------------------------------------------
             // |  |      | CMD X |  CMD C |  CMD V |  ||        | W_LFT | PG_DN | PG_UP     | W_RGT |  |
             // |  | CTRL | ALT | SHIFT  | CMD    |  || CLPBRD | LFT  | DWN   | UP          | RGT   |  |
-            // |  | UNDO | REDO |       |        |  || W_DEL  | BSPC | DEL   | CMD SHIFT K | CMD / |  |
+            // |  | UNDO | REDO |       |        |  || W_DEL  | BSPC | DEL   | CMD SHIFT K | CMD / | ESC |
             //                             |  |  |  ||  |  |  |
 
             bindings = <
                 &trans  &none     &kp LG(X) &kp LG(C)   &kp LG(V) &none        &none         &kp LA(LEFT) &kp PG_DN &kp PG_UP  &kp LA(RIGHT) &trans
                 &trans  &kp LCTRL &kp LALT &kp LSHIFT   &kp LGUI  &none        &kp LG(LS(V)) &kp LEFT  &kp DOWN  &kp UP        &kp RIGHT     &trans
-                &trans  &kp LG(Z) &kp LG(LS(Z)) &none   &none     &none        &word_del     &kp BSPC  &kp DEL   &kp LG(LS(K)) &kp LG(SLASH) &trans
+                &trans  &kp LG(Z) &kp LG(LS(Z)) &none   &none     &none        &word_del     &kp BSPC  &kp DEL   &kp LG(LS(K)) &kp LG(SLASH) &kp ESC
                 &none &trans &trans                                            &trans &none &none
             >;
         };
