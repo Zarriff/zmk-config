@@ -129,6 +129,13 @@
             mods = <MOD_LSFT>;
         };
 
+        launcher: launcher_morph {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&kp LA(SPACE)>, <&kp HYP(SPACE)>;
+
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     conditional_layers {
@@ -169,13 +176,13 @@
             // | App switch |  Q  |  W  |  F  |  P  |  B  ||  J  |  L   |  U  |  Y  |  '  | CAPWRD |
             // | TAB        |  A  |  R  |  S  |  T  |  G  ||  K  |  N   |  E  |  I  |  O  | ENTER  |
             // | BSPC       |  Z  |  X  |  C  |  D  |  V  ||  M  |  H   |  ,  |  .  |  /  | ESC    |
-            //                    | Ray | SPC/LYR2 | LYR1 || LYR3 | SHIFT  | Leader |
+            //                    | Ray | SPC/LYR2 | LYR1 || LYR3 | SHIFT  | Ray/Leader |
 
             bindings = <
                 &kp LG(SPACE) &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
                 &kp TAB       &hml_tp LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr_tp LCTRL O &kp ENTER
                 &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp FSLH        &kp ESC
-                &kp LA(SPACE) &lt_repeat 2 SPACE &mo 1                                        &sl_mo 3 3 &skq LSHIFT &kp HYP(SPACE)
+                &kp LA(SPACE) &lt_repeat 2 SPACE &mo 1                                        &sl_mo 3 3 &skq LSHIFT &launcher
             >;
         };
 
