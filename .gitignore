@@ -1,3 +1,6 @@
 .DS_Store
 
 .zmk/
+
+# Locally generated from the CI-committed SVGs via scripts/keymap-pdf.sh
+keymap-drawer/*.pdf
