@@ -50,7 +50,7 @@
 
         // Tap-preferred variants: rolls can never trigger the hold, only a
         // deliberate hold past the tapping term can. Used for ALT, where a
-        // misfire types a special character (e.g. Option+S = ß).
+        // misfire types a special character (e.g. Option+S = ß), and CTRL.
         hml_tp: homerow_mods_left_tap_preferred {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -173,7 +173,7 @@
 
             bindings = <
                 &kp LG(SPACE) &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
-                &kp TAB       &hml LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr LCTRL O    &kp ENTER
+                &kp TAB       &hml_tp LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr_tp LCTRL O &kp ENTER
                 &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp FSLH        &kp ESC
                 &kp LA(SPACE) &lt_repeat 2 SPACE &mo 1                                        &sl_mo 3 3 &skq LSHIFT &kp HYP(SPACE)
             >;
