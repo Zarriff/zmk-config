@@ -233,14 +233,14 @@
             display-name = "NUMBER";
 
             // -------------------------------------------------------------
-            // | CMD R | F10 | F9 | F8 | F7 |  || =/: | 7 | 8 | 9 | #/$ |  |
-            // | CMD W | F11 | F6 | F5 | F4 |  || - | 4 | 5 | 6 | 0     |  |
-            // | BSPC  | F12 | F3 | F2 | F1 | CMD Q || % | 1 | 2 | 3 | //*   |  |
+            // |      | F10 | F9 | F8 | F7 | CMD R || =/: | 7 | 8 | 9 | #/$ |  |
+            // |      | F11 | F6 | F5 | F4 | CMD W || - | 4 | 5 | 6 | 0     |  |
+            // | BSPC | F12 | F3 | F2 | F1 | CMD Q || % | 1 | 2 | 3 | //*   |  |
             //                        |  |  |  ||  |  |  |
 
             bindings = <
-                &kp LG(R) &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &none        &mtt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mtt DOLLAR HASH &trans
-                &kp LG(W) &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &none        &kp MINUS        &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0    &trans
+                &none     &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &kp LG(R)    &mtt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mtt DOLLAR HASH &trans
+                &none     &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &kp LG(W)    &kp MINUS        &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0    &trans
                 &trans    &kp F12        &kp F3       &kp F2         &kp F1        &kp LG(Q)    &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
                 &trans &trans &trans                                                            &none &kp SPACE &none
             >;
