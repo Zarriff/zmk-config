@@ -239,8 +239,8 @@
             //                        |  |  |  ||  |  |  |
 
             bindings = <
-                &none     &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &kp LG(R)    &mtt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mtt DOLLAR HASH &trans
-                &none     &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &kp LG(W)    &kp MINUS        &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0    &trans
+                &trans    &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &kp LG(R)    &mtt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mtt DOLLAR HASH &trans
+                &trans    &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &kp LG(W)    &kp MINUS        &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0    &trans
                 &trans    &kp F12        &kp F3       &kp F2         &kp F1        &kp LG(Q)    &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
                 &trans &trans &trans                                                            &none &kp SPACE &none
             >;
