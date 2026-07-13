@@ -127,7 +127,7 @@
         nav_word: nav_word {
             compatible = "zmk,behavior-auto-layer";
             #binding-cells = <1>;
-            continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN BSPC DEL LG(X) LG(C) LG(V) LG(Z) LG(LS(Z)) LG(LS(V)) LG(LS(K)) LG(SLASH)>;
+            continue-list = <LEFT DOWN UP RIGHT PG_UP PG_DN BSPC DEL LG(X) LG(C) LG(V) LG(R) LG(W) LG(Q) LG(Z) LG(LS(Z)) LG(LS(V)) LG(LS(K)) LG(SLASH)>;
             ignore-modifiers;
         };
 
@@ -216,15 +216,15 @@
             display-name = "NAV";
 
             // ----------------------------------------------------------------------------------------
-            // |  |      | CMD X |  CMD C |  CMD V |  ||        | W_LFT | PG_DN | PG_UP     | W_RGT |  |
-            // |  | CTRL | ALT | SHIFT  | CMD    |  || CLPBRD | LFT  | DWN   | UP          | RGT   |  |
-            // |  | UNDO | REDO |       |        |  || W_DEL  | BSPC | DEL   | CMD SHIFT K | CMD / | ESC |
+            // |  |      | CMD X |  CMD C |  CMD V | CMD Q ||        | W_LFT | PG_DN | PG_UP     | W_RGT |  |
+            // |  | CTRL | ALT | SHIFT  | CMD    | CMD W || CLPBRD | LFT  | DWN   | UP          | RGT   |  |
+            // |  | UNDO | REDO |       |        | CMD R || W_DEL  | BSPC | DEL   | CMD SHIFT K | CMD / | ESC |
             //                             |  |  |  ||  |  |  |
 
             bindings = <
-                &trans  &none     &kp LG(X) &kp LG(C)   &kp LG(V) &none        &none         &kp LA(LEFT) &kp PG_DN &kp PG_UP  &kp LA(RIGHT) &trans
-                &trans  &kp LCTRL &kp LALT &kp LSHIFT   &kp LGUI  &none        &kp LG(LS(V)) &kp LEFT  &kp DOWN  &kp UP        &kp RIGHT     &trans
-                &trans  &kp LG(Z) &kp LG(LS(Z)) &none   &none     &none        &word_del     &kp BSPC  &kp DEL   &kp LG(LS(K)) &kp LG(SLASH) &kp ESC
+                &trans  &none     &kp LG(X) &kp LG(C)   &kp LG(V) &kp LG(Q)    &none         &kp LA(LEFT) &kp PG_DN &kp PG_UP  &kp LA(RIGHT) &trans
+                &trans  &kp LCTRL &kp LALT &kp LSHIFT   &kp LGUI  &kp LG(W)    &kp LG(LS(V)) &kp LEFT  &kp DOWN  &kp UP        &kp RIGHT     &trans
+                &trans  &kp LG(Z) &kp LG(LS(Z)) &none   &none     &kp LG(R)    &word_del     &kp BSPC  &kp DEL   &kp LG(LS(K)) &kp LG(SLASH) &kp ESC
                 &none &trans &trans                                            &trans &none &none
             >;
         };
@@ -233,15 +233,15 @@
             display-name = "NUMBER";
 
             // -------------------------------------------------------------
-            // |      | F10 | F9 | F8 | F7 | CMD R || =/: | 7 | 8 | 9 | #/$ |  |
-            // |      | F11 | F6 | F5 | F4 | CMD W || - | 4 | 5 | 6 | 0     |  |
-            // | BSPC | F12 | F3 | F2 | F1 | CMD Q || % | 1 | 2 | 3 | //*   |  |
+            // |      | F10 | F9 | F8 | F7 |  || =/: | 7 | 8 | 9 | #/$ |  |
+            // |      | F11 | F6 | F5 | F4 |  || - | 4 | 5 | 6 | 0     |  |
+            // | BSPC | F12 | F3 | F2 | F1 |  || % | 1 | 2 | 3 | //*   |  |
             //                        |  |  |  ||  |  |  |
 
             bindings = <
-                &trans    &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &kp LG(R)    &mtt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mtt DOLLAR HASH &trans
-                &trans    &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &kp LG(W)    &kp MINUS        &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0    &trans
-                &trans    &kp F12        &kp F3       &kp F2         &kp F1        &kp LG(Q)    &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
+                &trans    &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &none        &mtt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mtt DOLLAR HASH &trans
+                &trans    &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &none        &kp MINUS        &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0    &trans
+                &trans    &kp F12        &kp F3       &kp F2         &kp F1        &none        &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
                 &trans &trans &trans                                                            &none &kp SPACE &none
             >;
         };
