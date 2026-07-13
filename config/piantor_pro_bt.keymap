@@ -5,6 +5,7 @@
  */
 
 #include <behaviors.dtsi>
+#include <behaviors/num_word.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/rgb.h>
@@ -17,6 +18,9 @@
 #define HYPER LC(LS(LA(LGUI)))
 #define MEH   LC(LS(LALT))
 #define HYP(k) LC(LS(LA(LG(k))))
+
+// Keep num-word active while chording homerow mods on the number layer.
+&num_word { ignore-modifiers; };
 
 / {
     chosen { zmk,physical-layout = &default_layout; };
@@ -77,13 +81,12 @@
             hold-trigger-on-release;
         };
 
-        lt_repeat: layer_tap_repeat {
+        smart_num: smart_number_layer {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            quick-tap-ms = <175>;
-            flavor = "tap-preferred";
-            bindings = <&mo>, <&kp>;
+            bindings = <&mo>, <&num_word>;
         };
 
         mtt: mod_tap_tap_preferred {
@@ -176,13 +179,13 @@
             // | App switch |  Q  |  W  |  F  |  P  |  B  ||  J  |  L   |  U  |  Y  |  '  | CAPWRD |
             // | TAB        |  A  |  R  |  S  |  T  |  G  ||  K  |  N   |  E  |  I  |  O  | ENTER  |
             // | BSPC       |  Z  |  X  |  C  |  D  |  V  ||  M  |  H   |  ,  |  .  |  /  | ESC    |
-            //                    | Ray | SPC/LYR2 | LYR1 || LYR3 | SHIFT  | Ray/Leader |
+            //                    | NUM/WORD | SPC | LYR1 || LYR3 | SHIFT  | Ray/Leader |
 
             bindings = <
                 &kp LG(SPACE) &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
                 &kp TAB       &hml_tp LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr_tp LCTRL O &kp ENTER
                 &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp FSLH        &kp ESC
-                &kp LA(SPACE) &lt_repeat 2 SPACE &mo 1                                        &sl_mo 3 3 &skq LSHIFT &launcher
+                &smart_num 2 2 &kp SPACE &mo 1                                                &sl_mo 3 3 &skq LSHIFT &launcher
             >;
         };
 
@@ -209,14 +212,14 @@
             // -------------------------------------------------------------
             // | CMD R | F10 | F9 | F8 | F7 |  || =/: | 7 | 8 | 9 | #/$ |  |
             // | CMD W | F11 | F6 | F5 | F4 |  || - | 4 | 5 | 6 | 0     |  |
-            // | CMD Q | F12 | F3 | F2 | F1 |  || % | 1 | 2 | 3 | //*   |  |
+            // | BSPC  | F12 | F3 | F2 | F1 | CMD Q || % | 1 | 2 | 3 | //*   |  |
             //                        |  |  |  ||  |  |  |
 
             bindings = <
                 &kp LG(R) &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &none        &mtt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mtt DOLLAR HASH &trans
                 &kp LG(W) &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &none        &kp MINUS        &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0    &trans
-                &kp LG(Q) &kp F12        &kp F3       &kp F2         &kp F1        &none        &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
-                &none &none &none                                                              &none &kp SPACE &none
+                &trans    &kp F12        &kp F3       &kp F2         &kp F1        &kp LG(Q)    &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
+                &trans &trans &trans                                                            &none &kp SPACE &none
             >;
         };
 
