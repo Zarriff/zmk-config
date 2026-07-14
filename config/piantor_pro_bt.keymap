@@ -19,8 +19,16 @@
 #define MEH   LC(LS(LALT))
 #define HYP(k) LC(LS(LA(LG(k))))
 
-// Keep num-word active while chording homerow mods on the number layer.
-&num_word { ignore-modifiers; };
+// Keep num-word active while chording homerow mods on the number layer, and
+// while typing the punctuation/math/symbols reachable on that layer. The
+// module's default continue-list is replaced here, so its entries are carried
+// forward. Shifted-number symbols ($ # % *) already survive via the module's
+// ignore-numbers (their HID usage is a digit key); COLON was the one exiting
+// early, since its usage (semicolon) is not numeric.
+&num_word {
+    ignore-modifiers;
+    continue-list = <BSPC DEL DOT COMMA PLUS MINUS ASTRK SLASH EQUAL COLON PRCNT DOLLAR HASH>;
+};
 
 / {
     chosen { zmk,physical-layout = &default_layout; };
