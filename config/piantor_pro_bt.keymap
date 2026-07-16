@@ -205,6 +205,12 @@
         // mods on the left and plain digits on the right. MEDIA was the obvious
         // host and the wrong one -- it carries sys_reset and bootloader twice
         // each, and is safe only because it is never visited.
+        //
+        // Entry is one-way, number thumb then symbol thumb, via &mo 3 on
+        // NUMBER's RH0; SYMBOL's LH2 is &none, which blocks the reverse. &mo
+        // rather than &trans there on purpose: &trans would inherit sl_mo, so a
+        // thumb slipping off SPACE at RH1 would arm sticky SYMBOL and silently
+        // turn the next digit into a symbol. &mo has no tap behavior to arm.
         fn_layer {
             if-layers = <2 3>;
             then-layer = <5>;
@@ -273,7 +279,7 @@
             bindings = <
                 &none         &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
                 &kp ENTER     &hml_tp LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr_tp LCTRL O &kp TAB
-                &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp FSLH        &kp SEMI
+                &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp SEMI        &kp FSLH
                 &smart_num 2 2 &kp SPACE &nav_esc 1 ESC                                       &sl_mo 3 3 &skq LSHIFT &launcher LG(SPACE) LA(SPACE)
             >;
         };
@@ -298,35 +304,40 @@
         raise_layer { // 2
             display-name = "NUMBER";
 
-            // Left is now plain mods, matching NAV, and the digits are plain
-            // taps: with the F-keys gone (see fn_layer) nothing on the left
-            // needs modifying, so the hold-taps that existed to reach across
-            // hands are unnecessary. The remaining hold-taps are symbol
-            // placement, not structure, and are left for a separate pass.
-            // ------------------------------------------------------------------
-            // |  |      |     |       |     |  || =/: | 7 | 8 | 9 | #/$ |  |
-            // |  | CTRL | ALT | SHIFT | CMD |  || -   | 4 | 5 | 6 | 0   |  |
-            // |  |      |     |       |     |  || %   | 1 | 2 | 3 | //* |  |
-            //                        |  |  |  ||  |  |  |
+            // Operators on the left, digits on the right, so every
+            // digit-operator pair is cross-hand. They are plain taps now: the
+            // old &mtt holds sat behind require-prior-idle-ms = 130, which
+            // forces a tap when the previous key was under 130ms ago -- so 4*2
+            // typed at speed silently produced 4/2. The operator was gated, not
+            // misplaced. Left mods are plain &kp and carry no bilateral
+            // restriction, so they still reach the left-hand operators.
+            //
+            // #/MEH and $/HYPER are the only hold-taps left, kept so Meh and
+            // Hyper can reach the digits across hands; the symbol is the tap,
+            // so it is never gated. RB4/RB5 are transparent on purpose: ; and /
+            // come from base, ; exits num_word (SEMI is off the continue-list)
+            // and / continues it (SLASH is on it).
+            // ---------------------------------------------------------------
+            // |  |      |     | #/MEH | $/HYPER | % || = | 7 | 8 | 9 | : |   |
+            // |  | CTRL | ALT | SHIFT | CMD     | * || - | 4 | 5 | 6 | 0 |   |
+            // |  |      |     | ,     | .       |   || + | 1 | 2 | 3 | ; | / |
+            //                          |  |  |  || SYMBOL | SPC |  |
 
             bindings = <
-                &trans    &none     &none    &none      &none    &none        &mtt COLON EQUAL &kp N7        &kp N8         &kp N9       &mtt DOLLAR HASH &trans
-                &trans    &kp LCTRL &kp LALT &kp LSHIFT &kp LGUI &none        &kp MINUS        &kp N4        &kp N5         &kp N6       &kp N0           &trans
-                &trans    &none     &none    &none      &none    &none        &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
-                &trans &trans &trans                                                           &none &kp SPACE &none
+                &trans    &none     &none    &hml MEH HASH &hml HYPER DOLLAR &kp PRCNT    &kp EQUAL &kp N7 &kp N8 &kp N9 &kp COLON &trans
+                &trans    &kp LCTRL &kp LALT &kp LSHIFT    &kp LGUI          &kp ASTRK    &kp MINUS &kp N4 &kp N5 &kp N6 &kp N0    &trans
+                &trans    &none     &none    &kp COMMA     &kp DOT           &none        &kp PLUS  &kp N1 &kp N2 &kp N3 &trans    &trans 
+                &trans &trans &trans                                                      &mo 3 &kp SPACE &none
             >;
         };
 
         extra_layer_1 { // 3
             display-name = "SYMBOL";
 
-            // LH2 is transparent so the number thumb still registers from
-            // here, which is what makes the 2+3 tri-layer reachable -- the same
-            // trick LH0 already plays for the 1+3 tri-layer. NUMBER's RH0 stays
-            // &none deliberately, so entry is symbol-thumb-then-number-thumb
-            // only: on NUMBER the right thumb's only job is SPACE at RH1, and
-            // opening RH0 there would let a thumb slip arm sticky-SYMBOL and
-            // silently turn the next digit into a symbol.
+            // LH2 is &none so the number thumb does not register from here:
+            // that blocks symbol-then-number entry into the 2+3 tri-layer,
+            // which is reached from the NUMBER side instead (see fn_layer).
+            // LH0 stays transparent, since the 1+3 tri-layer does rely on it.
             // ------------------------------------------------
             // |  | ! | @ | # | $ | % || ^ | & | * | ? | ' |  |
             // |  | + | = | ( | ) | " || : | ] | [ | } | { |  |
@@ -337,7 +348,7 @@
                 &trans    &kp EXCL        &kp AT_SIGN     &hml MEH HASH    &hml HYPER DOLLAR &kp PRCNT        &kp CARET &hmr HYPER AMPS &hmr MEH ASTRK   &kp QMARK        &kp SQT         &trans
                 &trans    &hml LCTRL PLUS &hml LALT EQUAL &hml LSHIFT LPAR &hml LGUI RPAR    &kp DQT          &kp COLON &hmr LGUI RBKT  &hmr LSHIFT LBKT &hmr LALT RBRC   &hmr LCTRL LBRC &trans
                 &trans    &kp PIPE        &kp LT          &kp MINUS        &kp GT            &kp BSLH         &kp GRAVE &kp UNDER       &kp SLASH        &kp TILDE        &kp SEMI        &trans
-                &trans &kp SPACE &trans                                                                       &none &none &none
+                &none &kp SPACE &trans                                                                        &none &none &none
             >;
         };
 
@@ -373,10 +384,10 @@
             //                        |  |  |  ||  |  |  |
 
             bindings = <
-                &none &none     &none    &none      &none    &none        &none &kp F7 &kp F8 &kp F9 &kp F12 &none
-                &none &kp LCTRL &kp LALT &kp LSHIFT &kp LGUI &none        &none &kp F4 &kp F5 &kp F6 &kp F10 &none
-                &none &none     &none    &none      &none    &none        &none &kp F1 &kp F2 &kp F3 &kp F11 &none
-                &none &none &none                                         &none &none &none
+                &none &none     &none    &kp MEH    &kp HYPER &none        &none &kp F7 &kp F8 &kp F9 &kp F12 &none
+                &none &kp LCTRL &kp LALT &kp LSHIFT &kp LGUI  &none        &none &kp F4 &kp F5 &kp F6 &kp F10 &none
+                &none &none     &none    &none      &none     &none        &none &kp F1 &kp F2 &kp F3 &kp F11 &none
+                &none &none &none                                          &none &none &none
             >;
         };
     };
