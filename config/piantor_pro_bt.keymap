@@ -197,6 +197,18 @@
             if-layers = <1 3>;
             then-layer = <4>;
         };
+
+        // F-keys used to share the NUMBER layer with the digits, which is what
+        // forced the hold-taps there: under the bilateral rule each side's
+        // homerow mods exist to modify the *other* side, so a two-handed layer
+        // needs mods on both hands. Splitting them off lets NUMBER keep plain
+        // mods on the left and plain digits on the right. MEDIA was the obvious
+        // host and the wrong one -- it carries sys_reset and bootloader twice
+        // each, and is safe only because it is never visited.
+        fn_layer {
+            if-layers = <2 3>;
+            then-layer = <5>;
+        };
     };
 
     combos {
@@ -286,23 +298,35 @@
         raise_layer { // 2
             display-name = "NUMBER";
 
-            // -------------------------------------------------------------
-            // |      | F10 | F9 | F8 | F7 |  || =/: | 7 | 8 | 9 | #/$ |  |
-            // |      | F11 | F6 | F5 | F4 |  || - | 4 | 5 | 6 | 0     |  |
-            // | BSPC | F12 | F3 | F2 | F1 |  || % | 1 | 2 | 3 | //*   |  |
+            // Left is now plain mods, matching NAV, and the digits are plain
+            // taps: with the F-keys gone (see fn_layer) nothing on the left
+            // needs modifying, so the hold-taps that existed to reach across
+            // hands are unnecessary. The remaining hold-taps are symbol
+            // placement, not structure, and are left for a separate pass.
+            // ------------------------------------------------------------------
+            // |  |      |     |       |     |  || =/: | 7 | 8 | 9 | #/$ |  |
+            // |  | CTRL | ALT | SHIFT | CMD |  || -   | 4 | 5 | 6 | 0   |  |
+            // |  |      |     |       |     |  || %   | 1 | 2 | 3 | //* |  |
             //                        |  |  |  ||  |  |  |
 
             bindings = <
-                &trans    &kp F10        &kp F9       &hml MEH F8    &hml HYPER F7 &none        &mtt COLON EQUAL &hmr HYPER N7 &hmr MEH N8    &kp N9       &mtt DOLLAR HASH &trans
-                &trans    &hml LCTRL F11 &hml LALT F6 &hml LSHIFT F5 &hml LGUI F4  &none        &kp MINUS        &hmr LGUI N4  &hmr LSHIFT N5 &hmr LALT N6 &hmr LCTRL N0    &trans
-                &trans    &kp F12        &kp F3       &kp F2         &kp F1        &none        &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
-                &trans &trans &trans                                                            &none &kp SPACE &none
+                &trans    &none     &none    &none      &none    &none        &mtt COLON EQUAL &kp N7        &kp N8         &kp N9       &mtt DOLLAR HASH &trans
+                &trans    &kp LCTRL &kp LALT &kp LSHIFT &kp LGUI &none        &kp MINUS        &kp N4        &kp N5         &kp N6       &kp N0           &trans
+                &trans    &none     &none    &none      &none    &none        &kp PRCNT        &kp N1        &mtt COMMA N2  &mtt DOT N3  &mtt ASTRK SLASH &trans
+                &trans &trans &trans                                                           &none &kp SPACE &none
             >;
         };
 
         extra_layer_1 { // 3
             display-name = "SYMBOL";
 
+            // LH2 is transparent so the number thumb still registers from
+            // here, which is what makes the 2+3 tri-layer reachable -- the same
+            // trick LH0 already plays for the 1+3 tri-layer. NUMBER's RH0 stays
+            // &none deliberately, so entry is symbol-thumb-then-number-thumb
+            // only: on NUMBER the right thumb's only job is SPACE at RH1, and
+            // opening RH0 there would let a thumb slip arm sticky-SYMBOL and
+            // silently turn the next digit into a symbol.
             // ------------------------------------------------
             // |  | ! | @ | # | $ | % || ^ | & | * | ? | ' |  |
             // |  | + | = | ( | ) | " || : | ] | [ | } | { |  |
@@ -313,7 +337,7 @@
                 &trans    &kp EXCL        &kp AT_SIGN     &hml MEH HASH    &hml HYPER DOLLAR &kp PRCNT        &kp CARET &hmr HYPER AMPS &hmr MEH ASTRK   &kp QMARK        &kp SQT         &trans
                 &trans    &hml LCTRL PLUS &hml LALT EQUAL &hml LSHIFT LPAR &hml LGUI RPAR    &kp DQT          &kp COLON &hmr LGUI RBKT  &hmr LSHIFT LBKT &hmr LALT RBRC   &hmr LCTRL LBRC &trans
                 &trans    &kp PIPE        &kp LT          &kp MINUS        &kp GT            &kp BSLH         &kp GRAVE &kp UNDER       &kp SLASH        &kp TILDE        &kp SEMI        &trans
-                &none &kp SPACE &trans                                                                        &none &none &none
+                &trans &kp SPACE &trans                                                                       &none &none &none
             >;
         };
 
@@ -331,6 +355,28 @@
                 &sys_reset  &none        &kp C_PREV   &kp C_NEXT   &kp C_PLAY_PAUSE &rgb_ug RGB_TOG        &none &none &none &none &none &sys_reset
                 &bootloader &none        &kp C_MUTE   &kp C_VOL_DN &kp C_VOL_UP     &studio_unlock         &none &none &none &none &none &bootloader
                 &none &none &none                                                                          &none &none &none
+            >;
+        };
+
+        extra_layer_3 { // 5
+            display-name = "FUNCTION";
+
+            // F1-F9 sit on their matching digit positions from the NUMBER
+            // layer, F10 where 0 is, F11 below it and F12 above. Plain mods on
+            // the left so the F-keys can be chorded across hands (Shift+F6,
+            // Cmd+F9); everything else is &none rather than transparent, so a
+            // stray press here does nothing instead of firing a base key.
+            // ------------------------------------------------------------------
+            // |  |      |     |       |     |  ||  | F7 | F8 | F9 | F12 |  |
+            // |  | CTRL | ALT | SHIFT | CMD |  ||  | F4 | F5 | F6 | F10 |  |
+            // |  |      |     |       |     |  ||  | F1 | F2 | F3 | F11 |  |
+            //                        |  |  |  ||  |  |  |
+
+            bindings = <
+                &none &none     &none    &none      &none    &none        &none &kp F7 &kp F8 &kp F9 &kp F12 &none
+                &none &kp LCTRL &kp LALT &kp LSHIFT &kp LGUI &none        &none &kp F4 &kp F5 &kp F6 &kp F10 &none
+                &none &none     &none    &none      &none    &none        &none &kp F1 &kp F2 &kp F3 &kp F11 &none
+                &none &none &none                                         &none &none &none
             >;
         };
     };
