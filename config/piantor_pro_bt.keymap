@@ -262,7 +262,7 @@
             //                    | NUM/WORD | SPC | NAV/ESC || LYR3 | SHIFT  | RAY/APPSW |
 
             bindings = <
-                &kp LGUI(SPACE)         &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
+                &kp LG(SPACE)         &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
                 &kp TAB       &hml_tp LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr_tp LCTRL O &kp ENTER
                 &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp SEMI        &kp FSLH
                 &smart_num 2 2 &kp SPACE &nav_esc 1 ESC                                       &sl_mo 3 3 &skq LSHIFT &kp LG(SPACE) 
