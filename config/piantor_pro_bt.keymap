@@ -254,13 +254,13 @@
 
             // -------------------------------------------------------------------------------------
             // | (none)     |  Q  |  W  |  F  |  P  |  B  ||  J  |  L   |  U  |  Y  |  '  | CAPWRD |
-            // | TAB        |  A  |  R  |  S  |  T  |  G  ||  K  |  N   |  E  |  I  |  O  | ENTER  |
+            // | ENTER      |  A  |  R  |  S  |  T  |  G  ||  K  |  N   |  E  |  I  |  O  | TAB    |
             // | BSPC       |  Z  |  X  |  C  |  D  |  V  ||  M  |  H   |  ,  |  .  |  /  | ;      |
             //                    | NUM/WORD | SPC | NAV/ESC || LYR3 | SHIFT  | RAY/APPSW |
 
             bindings = <
                 &none         &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
-                &kp TAB       &hml_tp LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr_tp LCTRL O &kp ENTER
+                &kp ENTER     &hml_tp LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr_tp LCTRL O &kp TAB
                 &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp FSLH        &kp SEMI
                 &smart_num 2 2 &kp SPACE &nav_esc 1 ESC                                       &sl_mo 3 3 &skq LSHIFT &launcher LG(SPACE) LA(SPACE)
             >;
