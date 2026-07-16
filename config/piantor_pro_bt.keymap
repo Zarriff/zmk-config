@@ -168,16 +168,20 @@
         };
 
         // Tap = Raycast, hold = Contexts app switcher (through tap_once, so a
-        // long hold still opens it once instead of flickering). Shorter term
-        // than the thumb layer keys: nothing is typed during this hold, so the
-        // term is pure latency rather than time spent dwelling on a layer.
+        // long hold still opens it once instead of flickering). Much shorter
+        // term than every other hold-tap here: nothing is typed during this
+        // hold, so under tap-preferred the term is pure latency on every app
+        // switch rather than time spent dwelling on a layer. It is tuned down
+        // against how fast the Raycast tap actually is -- if a tap ever starts
+        // opening Contexts, this is the number that is too low. The failure is
+        // cheap either way, since both launchers dismiss on re-trigger.
         // No require-prior-idle-ms -- it would force a tap right after typing,
         // firing Raycast when Contexts was wanted.
         launcher: launcher_hold_tap {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <180>;
+            tapping-term-ms = <140>;
             quick-tap-ms = <175>;
             bindings = <&tap_once>, <&kp>;
         };
