@@ -155,14 +155,6 @@
             mods = <MOD_LSFT>;
         };
 
-        launcher: launcher_morph {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp LA(SPACE)>, <&kp HYP(SPACE)>;
-
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
         word_del: word_delete_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -212,6 +204,19 @@
             require-prior-idle-ms = <150>;
             layers = <0>;
         };
+
+        // Leader Key on the two outer thumbs, replacing the old shift+RH2
+        // mod-morph that needed the sticky-shift thumb armed first.
+        // Deliberately no require-prior-idle-ms, unlike the combos above: RH2
+        // is not a typing key, so this can't misfire mid-stream, and a guard
+        // would instead swallow the combo right after typing -- leaving
+        // num_word armed and Raycast open, which is the worse failure.
+        combo_leader {
+            bindings = <&kp HYP(SPACE)>;
+            key-positions = <LH2 RH2>;
+            timeout-ms = <50>;
+            layers = <0>;
+        };
     };
 
     keymap {
@@ -224,13 +229,13 @@
             // | App switch |  Q  |  W  |  F  |  P  |  B  ||  J  |  L   |  U  |  Y  |  '  | CAPWRD |
             // | TAB        |  A  |  R  |  S  |  T  |  G  ||  K  |  N   |  E  |  I  |  O  | ENTER  |
             // | BSPC       |  Z  |  X  |  C  |  D  |  V  ||  M  |  H   |  ,  |  .  |  /  | ;      |
-            //                    | NUM/WORD | SPC | NAV/ESC || LYR3 | SHIFT  | Ray/Leader |
+            //                    | NUM/WORD | SPC | NAV/ESC || LYR3 | SHIFT  | RAYCAST |
 
             bindings = <
                 &kp LG(SPACE) &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
                 &kp TAB       &hml_tp LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr_tp LCTRL O &kp ENTER
                 &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp FSLH        &kp SEMI
-                &smart_num 2 2 &kp SPACE &nav_esc 1 ESC                                       &sl_mo 3 3 &skq LSHIFT &launcher
+                &smart_num 2 2 &kp SPACE &nav_esc 1 ESC                                       &sl_mo 3 3 &skq LSHIFT &kp LA(SPACE)
             >;
         };
 
