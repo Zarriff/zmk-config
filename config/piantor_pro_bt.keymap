@@ -33,6 +33,18 @@
 / {
     chosen { zmk,physical-layout = &default_layout; };
 
+    macros {
+        // Fire a chord exactly once, however long the key is held. A plain &kp
+        // in a hold-tap's hold slot keeps the keycode down, so macOS key-repeat
+        // re-triggers it -- which makes a toggle like Contexts flicker. A macro
+        // taps and finishes, leaving nothing held to repeat.
+        tap_once: tap_once_macro {
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>;
+        };
+    };
+
     behaviors {
         hml: homerow_mods_left {
             compatible = "zmk,behavior-hold-tap";
@@ -155,6 +167,21 @@
             mods = <MOD_LSFT>;
         };
 
+        // Tap = Raycast, hold = Contexts app switcher (through tap_once, so a
+        // long hold still opens it once instead of flickering). Shorter term
+        // than the thumb layer keys: nothing is typed during this hold, so the
+        // term is pure latency rather than time spent dwelling on a layer.
+        // No require-prior-idle-ms -- it would force a tap right after typing,
+        // firing Raycast when Contexts was wanted.
+        launcher: launcher_hold_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <180>;
+            quick-tap-ms = <175>;
+            bindings = <&tap_once>, <&kp>;
+        };
+
         word_del: word_delete_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
@@ -226,16 +253,16 @@
             display-name = "BASE";
 
             // -------------------------------------------------------------------------------------
-            // | App switch |  Q  |  W  |  F  |  P  |  B  ||  J  |  L   |  U  |  Y  |  '  | CAPWRD |
+            // | (none)     |  Q  |  W  |  F  |  P  |  B  ||  J  |  L   |  U  |  Y  |  '  | CAPWRD |
             // | TAB        |  A  |  R  |  S  |  T  |  G  ||  K  |  N   |  E  |  I  |  O  | ENTER  |
             // | BSPC       |  Z  |  X  |  C  |  D  |  V  ||  M  |  H   |  ,  |  .  |  /  | ;      |
-            //                    | NUM/WORD | SPC | NAV/ESC || LYR3 | SHIFT  | RAYCAST |
+            //                    | NUM/WORD | SPC | NAV/ESC || LYR3 | SHIFT  | RAY/APPSW |
 
             bindings = <
-                &kp LG(SPACE) &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
+                &none         &kp Q        &kp W       &hml MEH F    &hml HYPER P &kp B        &kp J &hmr HYPER L &hmr MEH U   &kp Y        &kp SQT         &caps_word
                 &kp TAB       &hml_tp LCTRL A &hml_tp LALT R &hml LSHFT S  &hml LGUI T  &kp G        &kp K &hmr LGUI N  &hmr LSHFT E &hmr_tp LALT I  &hmr_tp LCTRL O &kp ENTER
                 &kp BSPC      &kp Z        &kp X       &kp C         &kp D        &kp V        &kp M &kp H        &commaat     &dotexcl     &kp FSLH        &kp SEMI
-                &smart_num 2 2 &kp SPACE &nav_esc 1 ESC                                       &sl_mo 3 3 &skq LSHIFT &kp LA(SPACE)
+                &smart_num 2 2 &kp SPACE &nav_esc 1 ESC                                       &sl_mo 3 3 &skq LSHIFT &launcher LG(SPACE) LA(SPACE)
             >;
         };
 

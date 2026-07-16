@@ -12,6 +12,7 @@ parse_config:
     "&rgb_ug RGB_TOG": RGB
     "&num_word 2": NUM WORD
     "&nav_word 1": NAV WORD
+    "&tap_once LG(SPACE)": CONTEXTS
   zmk_keycode_map:
     EXCLAMATION: '!'
     EXCL: '!'
