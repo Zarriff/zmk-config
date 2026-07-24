@@ -43,6 +43,24 @@
             #binding-cells = <1>;
             bindings = <&macro_param_1to1>, <&kp MACRO_PLACEHOLDER>;
         };
+
+        // Type ~ with an explicit, self-releasing Shift. &kp TILDE carries the
+        // shift as an *implicit* modifier, which ZMK tracks as a single global
+        // that only clears when the tilde key is physically released. Rolling
+        // an unshifted key (e.g. /) before that release folds the shift-drop
+        // and the next keydown into one HID report, so the host applies the
+        // stale shift and ~/ becomes ~?. Pressing and releasing Shift around a
+        // brief GRAVE tap sends the release in its own report within ~10ms,
+        // decoupled from how long the thumb stays down.
+        tilde: tilde_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            tap-ms = <5>;
+            bindings = <&macro_press &kp LSHFT>,
+                       <&macro_tap &kp GRAVE>,
+                       <&macro_release &kp LSHFT>;
+        };
     };
 
     behaviors {
@@ -332,7 +350,7 @@
             bindings = <
                 &trans    &kp EXCL        &kp AT_SIGN     &hml MEH HASH    &hml HYPER DOLLAR &kp PRCNT        &kp CARET &hmr HYPER AMPS &hmr MEH ASTRK   &kp QMARK        &kp SQT         &trans
                 &trans    &hml LCTRL PLUS &hml LALT EQUAL &hml LSHIFT LPAR &hml LGUI RPAR    &kp DQT          &kp COLON &hmr LGUI RBKT  &hmr LSHIFT LBKT &hmr LALT RBRC   &hmr LCTRL LBRC &trans
-                &trans    &kp PIPE        &kp LT          &kp MINUS        &kp GT            &kp BSLH         &kp GRAVE &kp UNDER       &kp SLASH        &kp TILDE        &kp SEMI        &trans
+                &trans    &kp PIPE        &kp LT          &kp MINUS        &kp GT            &kp BSLH         &kp GRAVE &kp UNDER       &kp SLASH        &tilde           &kp SEMI        &trans
                 &none &kp SPACE &trans                                                                        &none &none &none
             >;
         };
